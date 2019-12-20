@@ -170,11 +170,10 @@ akreditasi %>%
 
 str(akreditasi)
 
-?pracma
-
 install.packages("pracma")
 library(pracma)
 
+# Mencari Modus untuk 5 variabel pada dataset akreditasi
 Mode(akreditasi$Peringkat)
 Mode(akreditasi$Bentuk)
 Mode(akreditasi$NamaPT)
@@ -182,7 +181,7 @@ Mode(akreditasi$NamaProdi)
 Mode(akreditasi$Jenjang)
 Mode(akreditasi$TahunSK)
 
-
+# Membuat objek baru  x1 sd x15: filter tahun
 x1 <- akreditasi %>% 
   filter(TahunSK==2004)
 x2 <- akreditasi %>% 
@@ -214,6 +213,7 @@ x14 <- akreditasi %>%
 x15 <- akreditasi %>% 
   filter(TahunSK==2018)
 
+#Modus untuk Bentuk PT masing-masing tahun 2004-2018
 Mode(x1$Bentuk)
 Mode(x2$Bentuk)
 Mode(x3$Bentuk)
@@ -230,6 +230,7 @@ Mode(x13$Bentuk)
 Mode(x14$Bentuk)
 Mode(x15$Bentuk)
 
+#Modus untuk Nama PT masing-masing tahun 2004-2018
 Mode(x1$NamaPT)
 Mode(x2$NamaPT)
 Mode(x3$NamaPT)
@@ -246,6 +247,7 @@ Mode(x13$NamaPT)
 Mode(x14$NamaPT)
 Mode(x15$NamaPT)
 
+#Modus untuk Nama Prodi masing-masing tahun 2004-2018
 Mode(x1$NamaProdi)
 Mode(x2$NamaProdi)
 Mode(x3$NamaProdi)
@@ -262,6 +264,7 @@ Mode(x13$NamaProdi)
 Mode(x14$NamaProdi)
 Mode(x15$NamaProdi)
 
+#Modus untuk Jenjang masing-masing tahun 2004-2018
 Mode(x1$Jenjang)
 Mode(x2$Jenjang)
 Mode(x3$Jenjang)
@@ -278,7 +281,7 @@ Mode(x13$Jenjang)
 Mode(x14$Jenjang)
 Mode(x15$Jenjang)
 
-
+#Modus untuk Peringkat masing-masing tahun 2004-2018
 Mode(x1$Peringkat)
 Mode(x2$Peringkat)
 Mode(x3$Peringkat)
