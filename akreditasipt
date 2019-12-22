@@ -1,0 +1,95 @@
+#Library yang diperlukan
+library(tidyverse)
+library(readr)
+library(ggplot2)
+library(plotly)
+library(pracma)  #mengaktifkan fungsi Mode (modus)
+
+ak.in <- read_csv("Dataset/banpt_pt-2.csv")
+view(ak.in)
+
+# Abaikan variabel yang tidak diperlukan
+ak.in$X9 <- NULL
+ak.in$X10 <- NULL
+ak.in$X11 <- NULL
+ak.in$X12 <- NULL
+ak.in$X13 <- NULL
+ak.in$X14 <- NULL
+ak.in$X15 <- NULL
+ak.in$LLDIKTI <- NULL
+view(ak.in)
+
+#Lihat tipe data pada masing-masing variabel
+str(ak.in)
+
+#Ubah tipe data chr menjadi factor
+ak.in$BentukPT <- factor(ak.in$BentukPT)
+ak.in$NamaPT <- factor(ak.in$NamaPT)
+ak.in$Peringkat <- factor(ak.in$Peringkat)
+ak.in$Wilayah <- factor(ak.in$Wilayah)
+ak.in$TahunSK <- factor(ak.in$TahunSK)
+summary(ak.in)
+
+#Mencari Modus dari total data (tahun 2014-2019)
+Mode(ak.in$BentukPT) # Sekolah Tinggi
+Mode(ak.in$Peringkat) # C
+Mode(ak.in$TahunSK) # 2015
+Mode(ak.in$Wilayah) # 4 
+
+#Mencari Modus dari masing-masing tahun
+t.14 <- ak.in %>% filter(TahunSK == 2014)
+t.15 <- ak.in %>% filter(TahunSK == 2015)
+t.16 <- ak.in %>% filter(TahunSK == 2016)
+t.17 <- ak.in %>% filter(TahunSK == 2017)
+t.18 <- ak.in %>% filter(TahunSK == 2018)
+t.19 <- ak.in %>% filter(TahunSK == 2019)
+
+Mode(t.14$BentukPT)  # Sekolah Tinggi
+Mode(t.15$BentukPT)  # Sekolah Tinggi
+Mode(t.16$BentukPT)  # Sekolah Tinggi
+Mode(t.17$BentukPT)  # Sekolah Tinggi
+Mode(t.18$BentukPT)  # Sekolah Tinggi
+Mode(t.19$BentukPT)  # Sekolah Tinggi
+
+Mode(t.14$Peringkat) # C
+Mode(t.15$Peringkat) # C
+Mode(t.16$Peringkat) # C
+Mode(t.17$Peringkat) # C
+Mode(t.18$Peringkat) # C
+Mode(t.19$Peringkat) # B
+
+Mode(t.14$Wilayah) # 7
+Mode(t.15$Wilayah) # 7
+Mode(t.16$Wilayah) # 7
+Mode(t.17$Wilayah) # 4
+Mode(t.18$Wilayah) # 4
+Mode(t.19$Wilayah) # 4
+
+# visualisasi data
+
+v1 <- ggplot(ak.in, aes(x=TahunSK, fill=BentukPT))+
+  geom_bar()
+ggplotly(v1)
+
+v2 <- ggplot(ak.in, aes(x=TahunSK, fill=Peringkat))+
+  geom_bar()
+ggplotly(v2)
+
+v3 <- ggplot(ak.in, aes(x=Peringkat, fill=BentukPT))+
+  geom_bar()
+ggplotly(v3)
+
+v4 <- ggplot(ak.in, aes(x=Peringkat, fill=BentukPT))+
+  geom_bar()+
+  facet_grid(~TahunSK)
+ggplotly(v4)
+
+
+v5 <- ggplot(ak.in, aes(x=Wilayah, fill=Wilayah))+
+  geom_bar()+
+  facet_grid(Peringkat~TahunSK)
+ggplotly(v5)
+
+v6 <- ggplot(ak.in, aes(x=Wilayah,fill=BentukPT))+
+  geom_bar()
+ggplotly(v6)
