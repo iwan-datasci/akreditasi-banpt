@@ -6,7 +6,7 @@ library(plotly)
 library(pracma)  #mengaktifkan fungsi Mode (modus)
 
 ak.in <- read_csv("Dataset/banpt_pt-2.csv")
-view(ak.in)
+View(ak.in)
 
 # Abaikan variabel yang tidak diperlukan
 ak.in$X9 <- NULL
