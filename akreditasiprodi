@@ -28,7 +28,7 @@ akreditasi$NamaPT <- factor(akreditasi$NamaPT)
 akreditasi$NamaProdi <- factor(akreditasi$NamaProdi)
 akreditasi$Jenjang <- factor(akreditasi$Jenjang)
 akreditasi$TahunSK <- factor(akreditasi$TahunSK)
-akreditasi$Peringkat <- factor(akreditasi$Peringkat)
+akreditasi$Peringkat <- factor(akreditasi$Peringkat, order = TRUE, levels = c("Not.Acr.", "C", "B", "A"))
 akreditasi$Bentuk <- factor(akreditasi$Bentuk)
 
 #Melihat level masing-masing variabel
